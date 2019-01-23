@@ -1,0 +1,151 @@
+/* reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    }
+    
+    html, body {
+    height: 100%;
+    line-height: 170%;
+    }
+    
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    
+    ol, ul {
+    list-style: none;
+    }
+    
+    blockquote, q {
+    quotes: none;
+    }
+    
+    blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+    }
+    
+    table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    }
+    
+    *:focus {  
+    outline: none;
+    }
+    
+    /* remove dotted outline from links,
+    button and input element */
+    a:focus, a:active,
+    button::-moz-focus-inner,
+    input[type="reset"]::-moz-focus-inner,
+    input[type="button"]::-moz-focus-inner,
+    input[type="submit"]::-moz-focus-inner {
+    border: 0;
+    outline: 0;
+    }
+
+    /* ========== END OF RESET ========== */
+
+    #landing-page {
+        background: linear-gradient(to right bottom, rgba(68, 160, 141, 0.5),rgba(9, 54, 55, 0.8)),url(../img/ballot-box.jpg) no-repeat;
+        background-position: top;
+        background-size: cover;
+        box-sizing: border-box;
+        color: #D3D9D0;
+        font-family: 'Raleway', sans-serif;
+        height: 100%;
+        width: 100%;
+    }
+
+    .landing-page-container {
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .nav-landing-container {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+    }
+    
+    .logo img {
+        height: 50px;
+    }
+
+    .landing-login {
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center; 
+        margin-left: auto;
+        padding: 8px 0 9px;
+        text-transform: uppercase;
+        -webkit-transition: all .4s ease-in-out;
+        -moz-transition: all .4s ease-out;
+        -ms-transition: all .4s ease-out;
+        -o-transition: all .4s ease-out;
+        transition: all .4s ease-in-out;
+    }
+
+    .landing-login:hover, .landing-login:visited, .landing-login:active, .landing-login:focus {
+        border-bottom: 3px solid #276955;
+    }
+
+    .hero {
+        margin-top: 5rem;
+        align-self: center;
+    }
+
+    .vote-caption {
+        display: flex;
+        flex-direction: column;
+        font-size: 5rem;
+        height: 50vh;
+    }
+
+    .vote-caption > li {
+        flex: 1 1 100%;
+    }
+
+    .vc-1, .vc-2, .vc-3 {
+        padding-left: 0.6em;
+    }
+
+    .vote-color {
+        color: #07743b;
+        font-weight: 800;
+    }
+
+    .vote-caption-text {
+        color: #fff;
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .get-started {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        text-align: center;
+        text-transform: uppercase;
+    }
+
+    .get-started a {
+        border-bottom: 3px solid #D3D9D0;
+        padding-bottom: 0.5rem;
+    }
+
+
+    
+        
