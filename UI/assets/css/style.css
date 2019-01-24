@@ -135,6 +135,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     }
 
     .get-started {
+        color: #07743b;
         font-size: 1.5rem;
         margin-top: 1.5rem;
         text-align: center;
@@ -142,10 +143,98 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     }
 
     .get-started a {
-        border-bottom: 3px solid #D3D9D0;
-        padding-bottom: 0.5rem;
+        background: rgba(255, 255, 255, 0.6);
+        border: 0;
+        border-radius: 1.5rem;
+        padding: 0.5rem;
     }
 
-
+    .login-page {
+        width: 100%; 
+        max-width: 360px;
+        padding: 4rem 0 0;
+        margin: auto;
+    }
     
-        
+    .form {
+        background: rgba(255, 255, 255, 0.8);
+        border: 0;
+        border-radius: 10px;
+        position: relative;
+        width: 100%;
+        z-index: 1; 
+        text-align: center;
+    }
+
+    .form-title {
+        color: #276955;
+        font-size: 1.5rem;
+        font-weight: 500;
+        padding-top: 1.5rem;
+        text-transform: capitalize;
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 0.8rem;
+    }
+
+    input {
+        font-size: 100%;
+        font-weight: 100;
+        background: #fff;
+        border: none;
+        -webkit-border-radius:5px;
+        -moz-border-radius:5px;
+        border-radius: 5px;
+        -webkit-box-shadow:0 0 5px #798786 inset;
+        -moz-box-shadow:0 0 5px #798786 inset;
+        box-shadow: 0 0 3px #798786 inset;
+        padding: 0.8rem 0.5rem;
+        color: black;
+        margin-bottom: 1rem;
+    }
+
+    input:focus { 
+        outline:none; 
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    }
+
+    form .message {
+        color: #000000;
+        text-align: center;
+    }
+
+    form .message a {
+        color: #07743b;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .btn {
+        color: #fff;
+        cursor: pointer;
+        padding: 0.8rem 0.6rem;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 110%;
+        font-weight: 600;
+        text-align: center;
+        outline: none;
+    }
+
+    .btn-green {
+        background: #07743b;
+    }
+    
+    .btn-green:hover, .btn-green:active  {
+        background: #0C8448;
+    }
+     
