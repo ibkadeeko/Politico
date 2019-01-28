@@ -15,8 +15,13 @@ function closeNav() {
 // MENU TOGGLE
 if (menuToggle && navBar) {
   menuToggle.addEventListener('click', () => {
-    closeNav();
     navBar.classList.toggle('active');
+  });
+}
+
+if (menuToggle && navBar && sideNav && adminToggle && closebtn) {
+  menuToggle.addEventListener('click', () => {
+    closeNav();
   });
 }
 
