@@ -194,6 +194,17 @@ body {
   padding: 2rem 0.8rem;
 }
 
+.vote-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vote-form-field > div {
+  padding: 0 1.35rem;
+  margin-bottom: 2rem;
+}
+
 input,
 select {
   font-size: 100%;
@@ -212,7 +223,17 @@ select {
 }
 
 input:focus {
-  outline: none;
+  outline: none!important;
+}
+
+input {
+  outline: none!important;
+}
+
+input[type=radio],
+input[type=radio]:focus,
+input[type=radio]:active {
+  box-shadow: none;
 }
 
 input:-webkit-autofill,
@@ -417,6 +438,21 @@ img {
   text-align: center;
 }
 
+.office-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  line-height: 25px;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.office-card-wrap {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
 
 
 
@@ -547,9 +583,9 @@ img {
 .table-container {
   box-sizing: border-box;
   display: table;
-  margin: 0 auto;
+  margin: 0;
   overflow-x: auto;
-  max-width: 100%;
+  width: 100%;
 }
 
 .table-container table {

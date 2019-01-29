@@ -58,63 +58,35 @@
         </div>
       </div>
       <div class="content">
-        <div class="admin-page-header"><h2 class="page-title">election results</h2></div>
-        <div class="table-container election-results">
-          <table class="election-result">
-            <thead>
-              <tr class="table-caption">
-                <th scope="col" colspan="2">2019 Presidential Elections</th>
-              </tr>
-              <tr>
-                <th scope="col">Candidate</th>
-                <th scope="col">Result</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <strong class="candidate-name">Fela Durotoye</strong>
-                  <span class="text-offset">Alliance for New Nigeria</span>
-                </td>
-                <td class="result">2,000,000</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong class="candidate-name">Atiku Abubakar</strong>
-                  <span class="text-offset">Peoples Democratic Party</span>
-                </td>
-                <td class="result">2,000,000</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong class="candidate-name">Muhammadu Buhari</strong>
-                  <span class="text-offset">All Progressives Congress</span>
-                </td>
-                <td class="result">2,000,000</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong class="candidate-name">Obiageli Ezekwesili</strong>
-                  <span class="text-offset">Allied Congress Party of Nigeria</span>
-                </td>
-                <td class="result">2,000,000</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong class="candidate-name">Omoyele Sowore</strong>
-                  <span class="text-offset">African Action Congress</span>
-                </td>
-                <td class="result">2,000,000</td>
-              </tr>
-              <tr>
-                <td>
-                  <strong class="candidate-name">Kingsley Moghalu</strong>
-                  <span class="text-offset">Young Progressive Party</span>
-                </td>
-                <td class="result">2,000,000</td>
-              </tr>
-            </tbody>
-          </table>
+  
+        <div class="create-parties">
+          <div class="form card">
+            <section class="register-form">
+              <h2 class="form-title">Create Party</h2>
+              <form action="#" class="form-field">
+                <label for="party-name">Party Name</label>
+                <input
+                  type="text"
+                  id="party-name"
+                  name="party-name"
+                  placeholder="Party Name"
+                  required
+                  autofocus
+                />
+                <label for="party-address">Enter Address</label>
+                <input
+                  type="text"
+                  id="party-address"
+                  name="party-address"
+                  placeholder="HQ Address"
+                  required
+                />
+                <label for="party-logo">Party Logo</label>
+                <input type="file" accept="image/*" id="party-logo" name="party-logo" required />
+                <button class="btn btn-primary">Create Party</button>
+              </form>
+            </section>
+          </div>
         </div>
       </div>
       <div class="footer">FOOTER</div>
