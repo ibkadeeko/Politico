@@ -406,17 +406,22 @@ header nav ul > li a:hover {
 }
 
 #body-wrapper {
-  box-sizing: border-box;
+  box-sizing: border-box!important;
   display: grid;
-  grid-template-columns: 1fr;
+  /* grid-template-columns: 1fr; */
   background: #fff;
-  margin: calc(50px + 1.35rem) 1.35rem;
+  margin-top: calc(50px + 1.35rem);
+  margin-bottom: 1.35rem;
+  width: calc(100% - 2.5rem);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #body-wrapper > div {
   padding: 0.15rem;
   margin-bottom: 2rem;
 }
+
 img {
   max-width: 100%;
   min-width: inherit;
@@ -454,8 +459,75 @@ img {
   max-width: 600px;
 }
 
+.party-display {
+  align-items: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  grid-gap: 2rem;
+  justify-content: center;
+}
 
+.party-display > div {
+  padding: 0.15rem;
+  margin-bottom:2rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  text-align: center;
+}
 
+.party-display div img {
+  width: 100%;
+}
+
+.party-display h2 {
+  line-height: 50px;
+}
+
+.homepage-showcase {
+  background: linear-gradient(to right bottom, rgba(68, 160, 141, 0.5), rgba(9, 54, 55, 0.8)),
+  url(../img/ballot-box.jpg) no-repeat;
+/* background-position: top; */
+background-size: cover;
+background-position: center;
+color: #d3d9d0;
+min-height: 100vh;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-bottom: 2rem;
+}
+
+.box-text {
+  font-size: 5vw; /* TODO @media-query 1.3rem  */
+  text-align: center;
+}
+
+.party-edit {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 50px;
+  line-height: 25px;
+  justify-content: flex-end;
+  padding: 0 1rem;
+}
+
+.party-edit-wrap {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+.delete {
+  margin-left: 0.25rem;
+}
+
+.edit {
+  margin-left: auto;
+}
 
 /* 
     ************ ADMIN PAGE **************
@@ -717,6 +789,9 @@ only screen and (max-width: 760px),
 
   .election-result td:nth-of-type(1):before { content: "Candidate"; }
 	.election-result td:nth-of-type(2):before { content: "No of Votes"; }
+  
+  .candidate-submissions td:nth-of-type(1):before { content: "Candidate"; }
+	.candidate-submissions td:nth-of-type(2):before { content: "Office"; }
 	
 }
 
@@ -886,6 +961,11 @@ only screen and (max-width: 760px),
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .box-text {
+    font-size: 1.3rem;
+    text-align: center;
   }
  
 
