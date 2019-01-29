@@ -20,6 +20,7 @@
         <nav class="active">
           <ul>
             <li><a href="./home.html">Home</a></li>
+            
             <li><a href="./offices.html">Offices</a></li>
             <li><a href="./parties.html">Parties</a></li>
             <li><a href="./profile.html">Profile</a></li>
@@ -47,15 +48,35 @@
           <ul>
             <li><a href="./admin.html">Election Results</a></li>
             <li><a href="./createparty.html">Create Party</a></li>
-            <li><a href="./createoffice.html">Create Political Office</a></li>
+            <li><a href="./createoffices.html">Create Political Office</a></li>
             <li><a href="./candidates.html">Manage Candidates</a></li>
           </ul>
         </div>
       </div>
       <div class="content">
-          <div class="admin-page-header">
-            <h2 class="page-title">Candidates</h2>
+          
+        <div class="create-parties">
+          <div class="form card">
+            <section class="register-form">
+              <h2 class="form-title">Create Office</h2>
+              <form action="#" class="form-field">
+                <label for="office-type">Office Type</label>
+                <select name="office-type" id="office-type">
+                  <option value="" selected disabled>Select Office type</option>
+                  <option value="Federal">Federal</option>
+                  <option value="Legislative">Legislative</option>
+                  <option value="State">State</option>
+                  <option value="LGA">LGA</option>
+                </select>
+                
+                <label for="office-name">Office Name</label>
+                <input type="text" id="office-name" name="office-name"   placeholder="Office Name" required/>
+                
+                <button class="btn btn-primary">Create Office</button>
+              </form>
+            </section>
           </div>
+        </div>
           
       </div>
       <div class="footer">FOOTER</div>
