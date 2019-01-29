@@ -30,6 +30,7 @@
           <li><a href="./parties.html">Parties</a></li>
           <li><a href="./profile.html">Profile</a></li>
           <li><a href="./admin.html">Admin</a></li>
+          <li><a href="./results.html">Results</a></li>
           <li><a href="#">Logout</a></li>
         </ul>
       </nav>
@@ -48,11 +49,26 @@
       </div>
 
       <div class="form">
-        <form action="#" class="form-field">
+        <form action="#">
             <label for="profile-photo">Upload Profle photo</label>
             <input type="file" accept="image/*" id="profile-photo" name="profile-photo" class="hidden" required />
         </form>
       </div>
+
+      <div class="create-parties">
+          <div class="form card">
+            <section class="register-form">
+              <h2 class="form-title">Become a Candidate</h2>
+              <form action="#" class="form-field">
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" required/>
+                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required/>
+                <input type="text" id="office-name" name="office-name" placeholder="Political Office" required/>
+                <input type="text" id="party-name" name="party-name" placeholder="Political Party" required/>
+                <button class="btn btn-primary">Submit</button>
+              </form>
+            </section>
+          </div>
+        </div>
       
 
 
