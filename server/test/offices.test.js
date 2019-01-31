@@ -42,4 +42,16 @@ describe('Offices', () => {
         done(err);
       });
   });
+  it('should LIST ALL offices on /offices GET', (done) => {
+    chai.request(app)
+      .get('/api/v1/politico/offices')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('id');
+        res.body.data[0].should.have.property('name');
+        res.body.data[0].should.have.property('type');
+        done();
+      });
+  });
 });

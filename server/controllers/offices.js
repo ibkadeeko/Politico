@@ -38,6 +38,14 @@ class offices {
       ],
     });
   }
+
+  // READ - Get All offices
+  static getAll(req, res) {
+    return res.status(200).json({
+      status: 200,
+      data: officesDb,
+    });
+  }
 }
 
 export default offices;
