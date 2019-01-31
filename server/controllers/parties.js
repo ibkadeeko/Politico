@@ -70,7 +70,7 @@ class parties {
     if (!selectedParty) {
       return res.status(404).json({
         status: '404',
-        error: 'id not found',
+        error: 'The party was not found',
       });
     }
     return res.status(200).json({
@@ -86,7 +86,7 @@ class parties {
     if (partyIndex === -1) {
       return res.status(404).json({
         status: '404',
-        error: 'id not found',
+        error: 'The party was not found',
       });
     }
     partiesDb[partyIndex].name = req.body.name;
@@ -103,7 +103,7 @@ class parties {
     if (partyIndex === -1) {
       return res.status(404).json({
         status: '404',
-        error: 'id not found',
+        error: 'The party was not found',
       });
     }
     partiesDb.splice(partyIndex, 1);
