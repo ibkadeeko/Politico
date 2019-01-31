@@ -32,16 +32,13 @@ class parties {
       });
     }
 
-    let createdParty;
+    const createdParty = {
+      id: partiesDb.length + 1,
+      name: req.body.name,
+      hqAddress: req.body.hqAddress,
+      logoUrl: req.body.logoUrl,
+    };
 
-    if (!alreadyExists) {
-      createdParty = {
-        id: partiesDb.length + 1,
-        name: req.body.name,
-        hqAddress: req.body.hqAddress,
-        logoUrl: req.body.logoUrl,
-      };
-    }
     partiesDb.push(createdParty);
     return res.status(201).json({
       status: 201,
