@@ -1,20 +1,20 @@
 const partiesDb = [
   {
     id: 1,
-    name: 'Peoples Democratic Party',
-    hqAddress: 'Abuja, Nigeria',
+    name: 'peoples democratic party',
+    hqAddress: 'abuja, nigeria',
     logoUrl: 'link',
   },
   {
     id: 2,
-    name: 'All Progressives Congress',
-    hqAddress: 'Lagos, Nigeria',
+    name: 'all progressives congress',
+    hqAddress: 'lagos, nigeria',
     logoUrl: 'link',
   },
   {
     id: 3,
-    name: 'Young Progressives Party',
-    hqAddress: 'Enugu, Nigeria',
+    name: 'young progressives party',
+    hqAddress: 'enugu, nigeria',
     logoUrl: 'link',
   },
 ];
