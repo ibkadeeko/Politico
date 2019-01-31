@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 
 // import routes
 import parties from './routes/parties';
+import offices from './routes/offices';
 
 // Setup express app
 const app = express();
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 
 // Connect to routes
-app.use('/api/politico/v1/parties', parties);
+app.use('/api/v1/politico/parties', parties);
+app.use('/api/v1/politico/offices', offices);
 
 app.listen(PORT, () => {
   // eslint-disable-next-line no-console

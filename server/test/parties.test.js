@@ -18,7 +18,7 @@ describe('Parties', () => {
       logoUrl: 'link',
     };
     chai.request(app)
-      .post('/api/politico/v1/parties')
+      .post('/api/v1/politico/parties')
       .send(newParty)
       .end((err, res) => {
         res.should.have.status(201);
@@ -43,7 +43,7 @@ describe('Parties', () => {
   };
   it('should NOT create party if NAME field is OMITTED', (done) => {
     chai.request(app)
-      .post('/api/politico/v1/parties')
+      .post('/api/v1/politico/parties')
       .send(nameOmitted)
       .end((err, res) => {
         res.should.have.status(400);
@@ -53,7 +53,7 @@ describe('Parties', () => {
   });
   it('should NOT create party if ADDRESS field is OMITTED', (done) => {
     chai.request(app)
-      .post('/api/politico/v1/parties')
+      .post('/api/v1/politico/parties')
       .send(addressOmitted)
       .end((err, res) => {
         res.should.have.status(400);
@@ -63,7 +63,7 @@ describe('Parties', () => {
   });
   it('should NOT create party if LOGOUrl field is OMITTED', (done) => {
     chai.request(app)
-      .post('/api/politico/v1/parties')
+      .post('/api/v1/politico/parties')
       .send(logoUrlOmitted)
       .end((err, res) => {
         res.should.have.status(400);
@@ -73,7 +73,7 @@ describe('Parties', () => {
   });
   it('should LIST ALL parties on /parties GET', (done) => {
     chai.request(app)
-      .get('/api/politico/v1/parties')
+      .get('/api/v1/politico/parties')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.data.should.be.a('array');
@@ -87,7 +87,7 @@ describe('Parties', () => {
   it('should LIST a SINGLE party on /parties/<id> GET', (done) => {
     const id = 1;
     chai.request(app)
-      .get(`/api/politico/v1/parties/${id}`)
+      .get(`/api/v1/politico/parties/${id}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.body.data.should.be.a('array');
