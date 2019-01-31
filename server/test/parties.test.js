@@ -1,3 +1,4 @@
+/* eslint-disable no-trailing-spaces */
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { it, describe } from 'mocha';
@@ -9,8 +10,8 @@ process.env.NODE_ENV = 'test';
 chai.use(chaiHttp);
 chai.should();
 
-describe('POST create party', () => {
-  it('it should create a party if the details are complete', (done) => {
+describe('Parties', () => {
+  it('should CREATE a SINGLE party on /parties POST', (done) => {
     const newParty = {
       name: 'PDP',
       hqAddress: 'Abuja, Nigeria',
@@ -27,9 +28,7 @@ describe('POST create party', () => {
         done(err);
       });
   });
-});
 
-describe('POST create party', () => {
   const nameOmitted = {
     hqAddress: 'Abuja, Nigeria',
     logoUrl: 'link',
@@ -42,7 +41,7 @@ describe('POST create party', () => {
     name: 'PDP',
     hqAddress: 'Abuja, Nigeria',
   };
-  it('IT should not create party if name field is omitted', (done) => {
+  it('should NOT create party if NAME field is OMITTED', (done) => {
     chai.request(app)
       .post('/api/politico/v1/parties')
       .send(nameOmitted)
@@ -52,7 +51,7 @@ describe('POST create party', () => {
         done(err);
       });
   });
-  it('IT should not create party if hqAddress field is omitted', (done) => {
+  it('should NOT create party if ADDRESS field is OMITTED', (done) => {
     chai.request(app)
       .post('/api/politico/v1/parties')
       .send(addressOmitted)
@@ -62,7 +61,7 @@ describe('POST create party', () => {
         done(err);
       });
   });
-  it('IT should not create party if logoUrl field is omitted', (done) => {
+  it('should NOT create party if LOGOUrl field is OMITTED', (done) => {
     chai.request(app)
       .post('/api/politico/v1/parties')
       .send(logoUrlOmitted)
@@ -70,6 +69,34 @@ describe('POST create party', () => {
         res.should.have.status(400);
         res.body.should.have.property('error').eql('logoUrl is required');
         done(err);
+      });
+  });
+  it('should LIST ALL parties on /parties GET', (done) => {
+    chai.request(app)
+      .get('/api/politico/v1/parties')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('id');
+        res.body.data[0].should.have.property('name');
+        res.body.data[0].should.have.property('hqAddress');
+        res.body.data[0].should.have.property('logoUrl');
+        done();
+      });
+  });
+  it('should LIST a SINGLE party on /parties/<id> GET', (done) => {
+    const id = 1;
+    chai.request(app)
+      .get(`/api/politico/v1/parties/${id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.data.should.be.a('array');
+        res.body.data[0].should.have.property('id');
+        res.body.data[0].should.have.property('name');
+        res.body.data[0].should.have.property('hqAddress');
+        res.body.data[0].should.have.property('logoUrl');
+        res.body.data[0].id.should.equal(id);
+        done();
       });
   });
 });
