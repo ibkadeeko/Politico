@@ -46,6 +46,22 @@ class offices {
       data: officesDb,
     });
   }
+
+  // READ - Get a particular office
+  static getOne(req, res) {
+    const id = parseInt(req.params.id, 10);
+    const selectedOffice = officesDb.find(office => office.id === id);
+    if (!selectedOffice) {
+      return res.status(404).json({
+        status: '404',
+        error: 'The office was not found',
+      });
+    }
+    return res.status(200).json({
+      status: 200,
+      data: [selectedOffice],
+    });
+  }
 }
 
 export default offices;

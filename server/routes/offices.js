@@ -5,6 +5,6 @@ const router = Express.Router();
 
 router.post('/', offices.create);
 router.get('/', offices.getAll);
-
+router.get('/:id', offices.getOne);
 
 export default router;
