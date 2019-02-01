@@ -13,7 +13,6 @@ chai.should();
 describe('Offices', () => {
   it('should CREATE a SINGLE office on /offices POST', (done) => {
     const newOffice = {
-      id: 1,
       type: 'state',
       name: 'governor of kogi',
     };
@@ -25,6 +24,20 @@ describe('Offices', () => {
         res.body.should.have.property('status').eql(201);
         res.body.should.be.a('object');
         res.body.data.should.be.a('array');
+        done(err);
+      });
+  });
+  it('should NOT create if office already exists on /offices POST', (done) => {
+    const newOffice = {
+      type: 'federal',
+      name: 'president',
+    };
+    chai.request(app)
+      .post('/api/v1/politico/offices')
+      .send(newOffice)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.have.property('status').eql(400);
         done(err);
       });
   });
@@ -47,10 +60,39 @@ describe('Offices', () => {
       .get('/api/v1/politico/offices')
       .end((err, res) => {
         res.should.have.status(200);
+        res.should.not.have.status(404);
         res.body.data.should.be.a('array');
         res.body.data[0].should.have.property('id');
         res.body.data[0].should.have.property('name');
         res.body.data[0].should.have.property('type');
+        done();
+      });
+  });
+  it('should LIST a SINGLE office on /offices/<id> GET', (done) => {
+    const id = 1;
+    chai.request(app)
+      .get(`/api/v1/politico/offices/${id}`)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.not.have.status(404);
+        res.body.data.should.be.a('array');
+        res.body.data.should.not.be.a('object');
+        res.body.data[0].should.have.property('id');
+        res.body.data[0].should.have.property('name');
+        res.body.data[0].should.have.property('type');
+        res.body.data[0].id.should.equal(id);
+        res.body.should.not.have.property('error');
+        done();
+      });
+  });
+  it('should NOT list a SINGLE office on /offices/<id> GET', (done) => {
+    const id = 6;
+    chai.request(app)
+      .get(`/api/v1/politico/offices/${id}`)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
         done();
       });
   });
