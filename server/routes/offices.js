@@ -1,10 +1,11 @@
 import Express from 'express';
 import offices from '../controllers/offices';
+import validate from '../middleware/validateOfficesInput';
 
 const router = Express.Router();
 
-router.post('/', offices.create);
+router.post('/', validate.input, offices.create);
 router.get('/', offices.getAll);
-router.get('/:id', offices.getOne);
+router.get('/:id', validate.id, offices.getOne);
 
 export default router;

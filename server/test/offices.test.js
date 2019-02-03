@@ -96,4 +96,15 @@ describe('Offices', () => {
         done(err);
       });
   });
+  it('should NOT list a SINGLE office on /offices/<id> GET', (done) => {
+    const id = '1xae4rg2';
+    chai.request(app)
+      .get(`/api/v1/offices/${id}`)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        done(err);
+      });
+  });
 });
