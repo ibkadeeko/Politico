@@ -17,7 +17,7 @@ describe('Offices', () => {
       name: 'governor of kogi',
     };
     chai.request(app)
-      .post('/api/v1/politico/offices')
+      .post('/api/v1/offices')
       .send(newOffice)
       .end((err, res) => {
         res.should.have.status(201);
@@ -33,7 +33,7 @@ describe('Offices', () => {
       name: 'president',
     };
     chai.request(app)
-      .post('/api/v1/politico/offices')
+      .post('/api/v1/offices')
       .send(newOffice)
       .end((err, res) => {
         res.should.have.status(400);
@@ -47,7 +47,7 @@ describe('Offices', () => {
   };
   it('should NOT create office if NAME field is OMITTED', (done) => {
     chai.request(app)
-      .post('/api/v1/politico/offices')
+      .post('/api/v1/offices')
       .send(nameOmitted)
       .end((err, res) => {
         res.should.have.status(400);
@@ -57,7 +57,7 @@ describe('Offices', () => {
   });
   it('should LIST ALL offices on /offices GET', (done) => {
     chai.request(app)
-      .get('/api/v1/politico/offices')
+      .get('/api/v1/offices')
       .end((err, res) => {
         res.should.have.status(200);
         res.should.not.have.status(404);
@@ -65,13 +65,13 @@ describe('Offices', () => {
         res.body.data[0].should.have.property('id');
         res.body.data[0].should.have.property('name');
         res.body.data[0].should.have.property('type');
-        done();
+        done(err);
       });
   });
   it('should LIST a SINGLE office on /offices/<id> GET', (done) => {
     const id = 1;
     chai.request(app)
-      .get(`/api/v1/politico/offices/${id}`)
+      .get(`/api/v1/offices/${id}`)
       .end((err, res) => {
         res.should.have.status(200);
         res.should.not.have.status(404);
@@ -82,18 +82,18 @@ describe('Offices', () => {
         res.body.data[0].should.have.property('type');
         res.body.data[0].id.should.equal(id);
         res.body.should.not.have.property('error');
-        done();
+        done(err);
       });
   });
   it('should NOT list a SINGLE office on /offices/<id> GET', (done) => {
-    const id = 6;
+    const id = 99999;
     chai.request(app)
-      .get(`/api/v1/politico/offices/${id}`)
+      .get(`/api/v1/offices/${id}`)
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.a('object');
         res.body.should.have.property('error');
-        done();
+        done(err);
       });
   });
 });

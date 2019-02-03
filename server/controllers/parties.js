@@ -1,27 +1,8 @@
 import partiesDb from '../models/parties';
 
-// Create Party
 class parties {
+  // Create Party
   static create(req, res) {
-    if (!req.body.name) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Party Name is required',
-      });
-    }
-    if (!req.body.hqAddress) {
-      return res.status(400).json({
-        status: 400,
-        error: 'Address is required',
-      });
-    }
-    if (!req.body.logoUrl) {
-      return res.status(400).json({
-        status: 400,
-        error: 'logoUrl is required',
-      });
-    }
-
     const alreadyExists = partiesDb
       .find(party => party.name.toLowerCase() === req.body.name.toLowerCase());
 
@@ -31,14 +12,12 @@ class parties {
         error: 'party already exists',
       });
     }
-
     const createdParty = {
       id: partiesDb.length + 1,
       name: req.body.name,
       hqAddress: req.body.hqAddress,
       logoUrl: req.body.logoUrl,
     };
-
     partiesDb.push(createdParty);
     return res.status(201).json({
       status: 201,
@@ -76,6 +55,7 @@ class parties {
     });
   }
 
+  // PUT - Update Party
   static update(req, res) {
     const id = parseInt(req.params.id, 10);
     const partyIndex = partiesDb.findIndex(party => party.id === id);
@@ -93,6 +73,7 @@ class parties {
     });
   }
 
+  // DELETE - Delete Party
   static delete(req, res) {
     const id = parseInt(req.params.id, 10);
     const partyIndex = partiesDb.findIndex(party => party.id === id);
