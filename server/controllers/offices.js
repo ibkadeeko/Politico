@@ -3,13 +3,6 @@ import officesDb from '../models/offices';
 // Create office
 class offices {
   static create(req, res) {
-    if (!req.body.name) {
-      return res.status(400).json({
-        status: 400,
-        error: 'office Name is required',
-      });
-    }
-
     const alreadyExists = officesDb
       .find(office => office.name.toLowerCase() === req.body.name.toLowerCase());
 
