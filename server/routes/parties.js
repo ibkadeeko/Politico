@@ -1,7 +1,6 @@
 import Express from 'express';
 import parties from '../controllers/parties';
 import validate from '../middleware/validatePartiesInput';
-// import dbcheck from '../middleware/databaseValidator';
 
 const router = Express.Router();
 
