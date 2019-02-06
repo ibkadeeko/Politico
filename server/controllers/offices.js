@@ -1,4 +1,3 @@
-import officesDb from '../models/offices';
 import db from '../models/index';
 
 // Create office
