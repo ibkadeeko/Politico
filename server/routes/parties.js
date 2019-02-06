@@ -7,7 +7,7 @@ const router = Express.Router();
 router.post('/', validate.input, parties.create);
 router.get('/', parties.getAll);
 router.get('/:id', validate.id, parties.getOne);
-router.put('/:id', validate.id, parties.update);
+router.patch('/:id', validate.id, parties.update);
 router.delete('/:id', validate.id, parties.delete);
 
 export default router;

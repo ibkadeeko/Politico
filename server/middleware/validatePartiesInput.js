@@ -7,11 +7,11 @@ class validate {
       .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/)
       .withMessage('Invalid Input')
       .customSanitizer(name => name.toLowerCase());
-    req.checkBody('hqAddress')
+    req.checkBody('hqaddress')
       .notEmpty()
       .withMessage('Address is required')
       .matches(/^[a-zA-Z0-9\s,.'-]{3,}$/);
-    req.checkBody('logoUrl')
+    req.checkBody('logourl')
       .notEmpty()
       .withMessage('logoUrl is required')
       .isURL()

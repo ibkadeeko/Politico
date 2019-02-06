@@ -14,8 +14,8 @@ describe('Parties', () => {
   it('should CREATE a SINGLE party on /parties POST', (done) => {
     const newParty = {
       name: 'PDP',
-      hqAddress: 'Abuja, Nigeria',
-      logoUrl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      hqaddress: 'Abuja, Nigeria',
+      logourl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     };
     chai.request(app)
       .post('/api/v1/parties')
@@ -31,8 +31,8 @@ describe('Parties', () => {
   it('should NOT CREATE if party already exists on /parties POST', (done) => {
     const newParty = {
       name: 'peoples democratic party',
-      hqAddress: 'abuja, nigeria',
-      logoUrl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
+      hqaddress: 'abuja, nigeria',
+      logourl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
     };
     chai.request(app)
       .post('/api/v1/parties')
@@ -46,16 +46,16 @@ describe('Parties', () => {
   });
 
   const nameOmitted = {
-    hqAddress: 'Abuja, Nigeria',
-    logoUrl: 'link',
+    hqaddress: 'Abuja, Nigeria',
+    logourl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
   };
   const addressOmitted = {
     name: 'PDP',
-    logoUrl: 'link',
+    logourl: 'https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940',
   };
   const logoUrlOmitted = {
     name: 'PDP',
-    hqAddress: 'Abuja, Nigeria',
+    hqaddress: 'Abuja, Nigeria',
   };
   it('should NOT CREATE party if NAME field is OMITTED', (done) => {
     chai.request(app)
@@ -95,8 +95,8 @@ describe('Parties', () => {
         res.body.data.should.be.a('array');
         res.body.data[0].should.have.property('id');
         res.body.data[0].should.have.property('name');
-        res.body.data[0].should.have.property('hqAddress');
-        res.body.data[0].should.have.property('logoUrl');
+        res.body.data[0].should.have.property('hqaddress');
+        res.body.data[0].should.have.property('logourl');
         done(err);
       });
   });
@@ -120,8 +120,8 @@ describe('Parties', () => {
         res.body.data.should.be.a('array');
         res.body.data[0].should.have.property('id');
         res.body.data[0].should.have.property('name');
-        res.body.data[0].should.have.property('hqAddress');
-        res.body.data[0].should.have.property('logoUrl');
+        res.body.data[0].should.have.property('hqaddress');
+        res.body.data[0].should.have.property('logourl');
         res.body.data[0].id.should.equal(id);
         done(err);
       });
@@ -129,7 +129,7 @@ describe('Parties', () => {
   it('should NOT UPDATE a party on /parties/<id> PUT', (done) => {
     const id = 999;
     chai.request(app)
-      .put(`/api/v1/parties/${id}`)
+      .patch(`/api/v1/parties/${id}`)
       .end((err, res) => {
         res.should.have.status(404);
         res.body.should.be.a('object');
@@ -140,7 +140,7 @@ describe('Parties', () => {
   it('On ANY /parties/<id> request It SHOULD NOT work if id is not a number', (done) => {
     const id = '1xae4rg2';
     chai.request(app)
-      .put(`/api/v1/parties/${id}`)
+      .patch(`/api/v1/parties/${id}`)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
@@ -151,16 +151,16 @@ describe('Parties', () => {
   it('should UPDATE a single party on /parties/<id> PUT', (done) => {
     const id = 1;
     chai.request(app)
-      .put(`/api/v1/parties/${id}`)
-      .send({ name: 'pdp' })
+      .patch(`/api/v1/parties/${id}`)
+      .send({ name: 'kowa party' })
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');
         res.body.should.have.property('data');
         res.body.data[0].should.have.property('id');
-        res.body.data[0].should.have.property('name').equal('pdp');
-        res.body.data[0].should.have.property('hqAddress');
-        res.body.data[0].should.have.property('logoUrl');
+        res.body.data[0].should.have.property('name').equal('kowa party');
+        res.body.data[0].should.have.property('hqaddress');
+        res.body.data[0].should.have.property('logourl');
         done(err);
       });
   });

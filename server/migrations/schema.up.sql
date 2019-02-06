@@ -1,7 +1,7 @@
 CREATE TABLE parties (
   id serial PRIMARY key,
   name VARCHAR(128) NOT NULL UNIQUE,
-  hqadrress VARCHAR NOT NULL,
+  hqaddress VARCHAR NOT NULL,
   logourl VARCHAR NOT NULL
 );
 CREATE TABLE offices (
