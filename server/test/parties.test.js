@@ -188,3 +188,16 @@ describe('Parties', () => {
       });
   });
 });
+
+describe('Root Route', () => {
+  it('should display Welcome on root route', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').eql('Welcome to Politico api v1');
+        done(err);
+      });
+  });
+});
