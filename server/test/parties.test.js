@@ -187,6 +187,17 @@ describe('Parties', () => {
         done(err);
       });
   });
+  it('should NOT DELETE a single party on /parties/<id> DELETE', (done) => {
+    const id = 1;
+    chai.request(app)
+      .delete(`/api/v1/parties/${id}`)
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        done(err);
+      });
+  });
 });
 
 describe('Root Route', () => {

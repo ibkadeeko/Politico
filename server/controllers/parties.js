@@ -17,7 +17,7 @@ class parties {
         if (err) {
           res.status(400).send({
             status: 400,
-            error: err.stack,
+            error: err,
           });
         }
         res.status(201).send({
@@ -33,9 +33,9 @@ class parties {
     db.query('SELECT * FROM parties ORDER BY id ASC', (err, foundParties) => {
       // callback
       if (err) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
-          error: err.stack,
+          error: err,
         });
       }
       return res.status(200).send({
@@ -53,7 +53,7 @@ class parties {
       if (err) {
         res.status(400).json({
           status: 400,
-          error: err.stack,
+          error: 'Database unreachable',
         });
       }
       if (foundParty.rowCount !== 0) {
@@ -77,7 +77,7 @@ class parties {
       if (err) {
         res.status(400).send({
           status: 400,
-          error: err.stack,
+          error: 'The party was not found',
         });
       }
       if (updatedParty.rowCount !== 0) {
@@ -97,16 +97,17 @@ class parties {
   static delete(req, res) {
     const id = parseInt(req.params.id, 10);
     db.query('DELETE FROM parties WHERE id = $1 RETURNING *', [id], (err, response) => {
+      // This error occurs when you try to delete a party that has already been deleted
       if (err) {
         res.status(400).send({
           status: 400,
-          error: err.stack,
+          error: 'The party was not found',
         });
       }
       if (response.rowCount !== 0) {
         return res.status(200).json({
           status: 200,
-          data: [{ message: `User Successfully deleted with ID: ${id}` }],
+          data: [{ message: 'User Successfully deleted' }],
         });
       }
       return res.status(404).send({
