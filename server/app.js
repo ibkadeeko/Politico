@@ -22,13 +22,14 @@ app.use(expressValidator());
 app.use('/api/v1/parties', parties);
 app.use('/api/v1/offices', offices);
 app.use('/api/v1/auth', users);
+// app.use('/api/v1/', candidates);
 
 // Root Route
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to Politico api v1' });
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`App started and listening on port: ${port}`);
