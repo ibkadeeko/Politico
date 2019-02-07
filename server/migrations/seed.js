@@ -1,3 +1,5 @@
+const populate = `
+
 INSERT INTO
   offices
 VALUES 
@@ -17,3 +19,6 @@ INSERT INTO
   users
 VALUES
   (default, 'michael', 'wagner', 'arrow', 'mikewagner@andela.com', 18007593000, 'Ilove0cats#', null, false);
+`;
+
+export default populate;

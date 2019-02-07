@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to Politico api v1' });
 });
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`App started and listening on port: ${port}`);
