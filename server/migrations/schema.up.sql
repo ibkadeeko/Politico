@@ -12,7 +12,7 @@ CREATE TABLE offices (
 );
 
 CREATE TABLE users (
-  id serial PRIMARY KEY,
+  userid serial PRIMARY KEY,
   firstname VARCHAR(128) NOT NULL,
   lastname VARCHAR(128) NOT NULL,
   othername VARCHAR(128),
