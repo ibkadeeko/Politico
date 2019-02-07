@@ -11,7 +11,8 @@
     "start:dev": "npm run seed && nodemon ./server/app.js  --exec babel-node --",
     "pretest": "npm run seed",
     "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 \"server/**/*.test.js\" --exit",
-    "posttest": "psql testPolitico ibukun < ./server/migrations/schema.down.sql"
+    "posttest": "psql testPolitico ibukun < ./server/migrations/schema.down.sql",
+    "justCheck": "babel-node ./server/migrations/seed.js"
   },
   "repository": {
     "type": "git",

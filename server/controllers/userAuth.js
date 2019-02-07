@@ -57,16 +57,6 @@ class users {
     });
   }
 
-  // static me(req, res) {
-  //   const token = req.headers['x-access-token'];
-  //   if (!token) return res.status(401).send({ auth: false, message: 'No token provided.' });
-
-  //   jwt.verify(token, process.env.SECRETkey, (err, decoded) => {
-  //     if (err) return res.status(500).send({ auth: false, message: 'Failed to authenticate token.' });
-  //     res.status(200).send(decoded);
-  //   });
-  // }
-
   static login(req, res) {
     const text = 'SELECT * FROM users WHERE email = $1';
     const { email } = req.body;

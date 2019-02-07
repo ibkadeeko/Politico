@@ -9,7 +9,12 @@ env:
   global:
     - CC_TEST_REPORTER_ID=760492325fe8c72993fc835a57e9849e657a1d773b590f91ea77b5a132ad5b7b
 
+services:
+  - postgresql
+
 before_script:
+  - psql -c "CREATE DATABASE testPolitico;" -U postgres
+  - psql -c "CREATE USER ibukun WITH PASSWORD 'password';" -U postgres
   - npm install nyc
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter

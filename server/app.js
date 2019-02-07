@@ -22,6 +22,7 @@ app.use(expressValidator());
 app.use('/api/v1/parties', parties);
 app.use('/api/v1/offices', offices);
 app.use('/api/v1/auth', users);
+// app.use('/api/v1/', candidates);
 
 // Root Route
 app.get('/', (req, res) => {

@@ -8,7 +8,7 @@ CREATE TABLE parties (
 CREATE TABLE offices (
   id serial PRIMARY key,
   type VARCHAR(128) NOT NULL,
-  name VARCHAR(128) NOT NUll UNIQUE 
+  name VARCHAR(128) NOT NUll UNIQUE
 );
 
 CREATE TABLE users (
@@ -20,5 +20,13 @@ CREATE TABLE users (
   phone VARCHAR(128) NOT NULL UNIQUE,
   password VARCHAR(128) NOT NULL,
   passporturl TEXT,
-  isadmin Boolean
+  isadmin Boolean DEFAULT false
+);
+
+CREATE TABLE candidates (
+  candidateid serial PRIMARY KEY,
+  officeid INTEGER REFERENCES offices(id),
+  userid INTEGER REFERENCES users(userid) UNIQUE,
+  partyid INTEGER REFERENCES parties(id),
+  isapproved boolean DEFAULT false
 );
