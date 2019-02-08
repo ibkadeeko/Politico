@@ -13,7 +13,6 @@ class users {
     } = req.body;
     // hash password and store in hashedPassword
     const hashedPassword = bcrypt.hashSync(password, 8);
-    const isadmin = false;
     const values = [
       firstname,
       lastname,
@@ -22,22 +21,21 @@ class users {
       phone,
       hashedPassword,
       passporturl,
-      isadmin,
     ];
-    const text = 'INSERT INTO users(firstname, lastname, othername, email, phone, password, passporturl, isadmin) VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *';
+    const text = 'INSERT INTO users(firstname, lastname, othername, email, phone, password, passporturl) VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING *';
     // Check if user already exists
-    db.query('SELECT * FROM users WHERE email = $1 AND phone = $2', [email, phone], (error, response) => {
+    db.query('SELECT * FROM users WHERE email = $1', [email], (error, response) => {
       if (response.rowCount !== 0) {
         return res.status(400).json({
           status: 400,
-          error: 'User already exists',
+          error: 'User with this email already exists',
         });
       }
       return db.query(text, values, (err, newUser) => {
         if (err) {
           return res.status(500).send({
             status: 500,
-            error: 'Internal response error',
+            error: 'User with this phone number already exists',
           });
         }
         const payload = {

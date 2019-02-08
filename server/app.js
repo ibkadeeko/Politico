@@ -8,6 +8,7 @@ import dotenv from 'dotenv';
 import parties from './routes/parties';
 import offices from './routes/offices';
 import users from './routes/users';
+import candidates from './routes/candidates';
 
 // Setup express app
 dotenv.config();
@@ -19,17 +20,17 @@ app.use(bodyParser.json()); // parse application/json
 app.use(expressValidator());
 
 // Connect to routes
+app.use('/api/v1', candidates);
 app.use('/api/v1/parties', parties);
 app.use('/api/v1/offices', offices);
 app.use('/api/v1/auth', users);
-// app.use('/api/v1/', candidates);
 
 // Root Route
 app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to Politico api v1' });
 });
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`App started and listening on port: ${port}`);

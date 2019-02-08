@@ -1,11 +1,10 @@
 import Express from 'express';
 import users from '../controllers/userAuth';
+import validate from '../middleware/ValidateUsersInput';
 
 const router = Express.Router();
 
 
-router.post('/signup', users.register);
-router.post('/login', users.login);
-// router.get('/me', users.me);
-
+router.post('/signup', validate.input, users.register);
+router.post('/login', validate.email, users.login);
 export default router;

@@ -77,7 +77,7 @@ class parties {
       if (err) {
         res.status(400).send({
           status: 400,
-          error: 'The party was not found',
+          error: 'Bad Request',
         });
       }
       if (updatedParty.rowCount !== 0) {
@@ -107,7 +107,7 @@ class parties {
       if (response.rowCount !== 0) {
         return res.status(200).json({
           status: 200,
-          data: [{ message: 'User Successfully deleted' }],
+          data: [{ message: 'Party Successfully deleted' }],
         });
       }
       return res.status(404).send({
