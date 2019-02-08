@@ -73,22 +73,30 @@ class parties {
   static update(req, res) {
     const id = parseInt(req.params.id, 10);
     const { name } = req.body;
-    db.query('UPDATE parties SET name = $1 WHERE id = $2 RETURNING *', [name, id], (err, updatedParty) => {
-      if (err) {
-        res.status(400).send({
+    db.query('SELECT * FROM parties WHERE name = $1', [name], (error, response) => {
+      if (response.rowCount !== 0) {
+        return res.status(400).json({
           status: 400,
-          error: 'Bad Request',
+          error: 'party already exists',
         });
       }
-      if (updatedParty.rowCount !== 0) {
-        return res.status(200).json({
-          status: 200,
-          data: [updatedParty.rows[0]],
+      return db.query('UPDATE parties SET name = $1 WHERE id = $2 RETURNING *', [name, id], (err, updatedParty) => {
+        if (err) {
+          res.status(400).send({
+            status: 400,
+            error: 'Bad Request',
+          });
+        }
+        if (updatedParty.rowCount !== 0) {
+          return res.status(200).json({
+            status: 200,
+            data: [updatedParty.rows[0]],
+          });
+        }
+        return res.status(404).send({
+          status: '404',
+          error: 'The party was not found',
         });
-      }
-      return res.status(404).send({
-        status: '404',
-        error: 'The party was not found',
       });
     });
   }
