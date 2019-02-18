@@ -3,6 +3,7 @@ import express from 'express';
 import expressValidator from 'express-validator';
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 // import routes
 import parties from './routes/parties';
@@ -18,6 +19,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded
 app.use(bodyParser.json()); // parse application/json
 app.use(expressValidator());
+app.use(cors());
 
 // Connect to routes
 app.use('/api/v1', candidates);
