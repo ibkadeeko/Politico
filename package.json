@@ -8,12 +8,13 @@
     "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test",
     "start": "babel-node ./server/app.js",
     "start:dev": "nodemon ./server/app.js  --exec babel-node --",
-    "pretest": "npm run droptable && npm run createtable && npm run populatetable",
+    "pretest": "npm run droptable && npm run createtable && npm run populatetable && npm run createAdmin",
     "test": "set NODE_ENV=test&& nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 \"server/**/*.test.js\" --exit",
     "posttest": "npm run droptable",
     "createtable": "babel-node ./server/migrations/runcreatetables.js",
     "populatetable": "babel-node ./server/migrations/runseed.js",
-    "droptable": "babel-node ./server/migrations/runDropTables.js"
+    "droptable": "babel-node ./server/migrations/runDropTables.js",
+    "createAdmin": "babel-node ./server/migrations/createAdmin.js"
   },
   "repository": {
     "type": "git",

@@ -2,9 +2,11 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import { it, describe } from 'mocha';
+import dotenv from 'dotenv';
 
 import app from '../app';
 
+dotenv.config();
 process.env.NODE_ENV = 'test';
 
 chai.use(chaiHttp);
@@ -23,6 +25,29 @@ const logoUrlOmitted = {
   name: 'PDP',
   hqaddress: 'Abuja, Nigeria',
 };
+const adminDetails = {
+  email: process.env.ADMIN_EMAIL,
+  password: process.env.ADMIN_PASSWORD,
+};
+
+let token;
+
+describe('Admin', () => {
+  it('SHOULD LOGIN admin on POST auth/login', (done) => {
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(adminDetails)
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.have.property('status').eql(200);
+        res.body.should.have.property('data');
+        res.body.data[0].should.have.property('token');
+        // eslint-disable-next-line prefer-destructuring
+        token = res.body.data[0].token;
+        done(err);
+      });
+  });
+});
 
 describe('PARTIES ROUTES', () => {
   describe('POST /parties', () => {
@@ -35,6 +60,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .post('/api/v1/parties')
         .send(newParty)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.have.property('error');
@@ -46,6 +72,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .post('/api/v1/parties')
         .send(nameOmitted)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.error.should.be.eql('Party Name is required');
@@ -56,6 +83,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .post('/api/v1/parties')
         .send(addressOmitted)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.error.should.be.eql('Address is required');
@@ -66,6 +94,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .post('/api/v1/parties')
         .send(logoUrlOmitted)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.have.property('error').eql('logoUrl is required');
@@ -81,6 +110,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .post('/api/v1/parties')
         .send(newParty)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(201);
           res.body.should.have.property('status').eql(201);
@@ -95,6 +125,7 @@ describe('PARTIES ROUTES', () => {
     it('should LIST ALL parties', (done) => {
       chai.request(app)
         .get('/api/v1/parties')
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.data.should.be.a('array');
@@ -111,6 +142,7 @@ describe('PARTIES ROUTES', () => {
     const id = '1xae4rg2';
     chai.request(app)
       .patch(`/api/v1/parties/${id}`)
+      .set('authorization', `Bearer ${token}`)
       .end((err, res) => {
         res.should.have.status(400);
         res.body.should.be.a('object');
@@ -124,6 +156,7 @@ describe('PARTIES ROUTES', () => {
       const id = 999;
       chai.request(app)
         .get(`/api/v1/parties/${id}`)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
@@ -135,6 +168,7 @@ describe('PARTIES ROUTES', () => {
       const id = 1;
       chai.request(app)
         .get(`/api/v1/parties/${id}`)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.data.should.be.a('array');
@@ -153,6 +187,7 @@ describe('PARTIES ROUTES', () => {
       const id = 999;
       chai.request(app)
         .patch(`/api/v1/parties/${id}`)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
@@ -165,6 +200,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .patch(`/api/v1/parties/${id}`)
         .send({ name: 'peoples democratic party' })
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(400);
           res.body.should.be.a('object');
@@ -177,6 +213,7 @@ describe('PARTIES ROUTES', () => {
       chai.request(app)
         .patch(`/api/v1/parties/${id}`)
         .send({ name: 'kowa party' })
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -195,6 +232,7 @@ describe('PARTIES ROUTES', () => {
       const id = 999;
       chai.request(app)
         .delete(`/api/v1/parties/${id}`)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
@@ -206,6 +244,7 @@ describe('PARTIES ROUTES', () => {
       const id = 1;
       chai.request(app)
         .delete(`/api/v1/parties/${id}`)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('object');
@@ -218,6 +257,7 @@ describe('PARTIES ROUTES', () => {
       const id = 1;
       chai.request(app)
         .delete(`/api/v1/parties/${id}`)
+        .set('authorization', `Bearer ${token}`)
         .end((err, res) => {
           res.should.have.status(404);
           res.body.should.be.a('object');
