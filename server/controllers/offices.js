@@ -33,7 +33,7 @@ class offices {
     db.query('SELECT * FROM offices ORDER BY id ASC', (err, foundOffices) => {
       // callback
       if (err) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           error: err.stack,
         });
@@ -51,7 +51,7 @@ class offices {
     const id = parseInt(req.params.id, 10);
     db.query(text, [id], (err, foundOffice) => {
       if (err) {
-        res.status(400).json({
+        return res.status(400).json({
           status: 400,
           error: err.stack,
         });

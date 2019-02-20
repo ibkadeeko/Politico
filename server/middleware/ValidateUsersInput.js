@@ -66,21 +66,6 @@ class validate {
     }
     next();
   }
-
-  static id(req, res, next) {
-    req.checkParams('id')
-      .notEmpty()
-      .trim()
-      .isNumeric();
-    const errors = req.validationErrors();
-    if (errors) {
-      return res.status(400).json({
-        status: 400,
-        error: errors[0].msg,
-      });
-    }
-    next();
-  }
 }
 
 export default validate;

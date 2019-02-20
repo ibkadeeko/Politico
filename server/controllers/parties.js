@@ -15,8 +15,8 @@ class parties {
       }
       return db.query(text, values, (err, newParty) => {
         if (err) {
-          res.status(400).send({
-            status: 400,
+          res.status(500).send({
+            status: 500,
             error: err,
           });
         }
@@ -33,8 +33,8 @@ class parties {
     db.query('SELECT * FROM parties ORDER BY id ASC', (err, foundParties) => {
       // callback
       if (err) {
-        return res.status(400).json({
-          status: 400,
+        return res.status(500).json({
+          status: 500,
           error: err,
         });
       }
@@ -51,8 +51,8 @@ class parties {
     const id = parseInt(req.params.id, 10);
     db.query(text, [id], (err, foundParty) => {
       if (err) {
-        res.status(400).json({
-          status: 400,
+        res.status(500).json({
+          status: 500,
           error: 'Database unreachable',
         });
       }
@@ -82,9 +82,9 @@ class parties {
       }
       return db.query('UPDATE parties SET name = $1 WHERE id = $2 RETURNING *', [name, id], (err, updatedParty) => {
         if (err) {
-          res.status(400).send({
-            status: 400,
-            error: 'Bad Request',
+          res.status(500).send({
+            status: 500,
+            error: 'Database Unreachable',
           });
         }
         if (updatedParty.rowCount !== 0) {
@@ -107,9 +107,9 @@ class parties {
     db.query('DELETE FROM parties WHERE id = $1 RETURNING *', [id], (err, response) => {
       // This error occurs when you try to delete a party that has already been deleted
       if (err) {
-        res.status(400).send({
-          status: 400,
-          error: 'The party was not found',
+        return res.status(500).send({
+          status: 500,
+          error: 'Database Unreachable',
         });
       }
       if (response.rowCount !== 0) {

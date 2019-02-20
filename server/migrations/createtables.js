@@ -1,11 +1,5 @@
 const createTable = `
 
-DROP TABLE IF EXISTS offices cascade;
-DROP TABLE IF EXISTS parties cascade;
-DROP TABLE IF EXISTS users cascade;
-DROP TABLE IF EXISTS candidates cascade;
-DROP TABLE IF EXISTS votes cascade;
-
 CREATE TABLE parties (
   id serial PRIMARY key,
   name VARCHAR(128) NOT NULL UNIQUE,
@@ -33,7 +27,7 @@ CREATE TABLE users (
 
 CREATE TABLE candidates (
   candidateid serial PRIMARY KEY,
-  officeid INTEGER NOT NULL UNIQUE,
+  officeid INTEGER NOT NULL,
   userid INTEGER NOT NULL UNIQUE,
   partyid INTEGER NOT NULL
 );
