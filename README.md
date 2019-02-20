@@ -4,7 +4,6 @@ Politico is an online voting platform which both the politicians and citizens ca
 [![Build Status](https://travis-ci.com/ibkadeeko/Politico.svg?branch=develop)](https://travis-ci.com/ibkadeeko/Politico)
 [![Coverage Status](https://coveralls.io/repos/github/ibkadeeko/Politico/badge.svg?branch=develop)](https://coveralls.io/github/ibkadeeko/Politico?branch=develop) 
 [![Maintainability](https://api.codeclimate.com/v1/badges/d05c1a7e9e480e981acf/maintainability)](https://codeclimate.com/github/ibkadeeko/Politico/maintainability) 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/d05c1a7e9e480e981acf/test_coverage)](https://codeclimate.com/github/ibkadeeko/Politico/test_coverage)
 
 ## Template UI
 
