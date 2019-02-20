@@ -88,7 +88,7 @@ describe('ELECTIONS', () => {
         chai.request(app)
           .post('/api/v1/office/register')
           .send(newCandidate)
-          .set('authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjQsImVtYWlsIjoibWlrZXl5eUBob3RtYWlsLmNvbSIsImlzYWRtaW4iOmZhbHNlLCJpYXQiOjE1NTA1NzQ2ODUsImV4cCI6MTU1MDU5NjI4NX0.XwuyX1RJjN0oWcFzxGfmkTPWiwUOfl8QM2SIkC3c33g')
+          .set('authorization', 'Bearer someinvalidtokenlikethat')
           .end((err, res) => {
             res.should.have.status(500);
             res.body.should.have.property('auth').eql(false);
