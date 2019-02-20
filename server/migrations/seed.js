@@ -19,6 +19,11 @@ INSERT INTO
   users
 VALUES
   (default, 'michael', 'wagner', 'arrow', 'mikewagner@andela.com', 18007593000, 'Ilove0cats#', null, false);
+
+INSERT INTO
+  candidates
+VALUES
+  (default, 1, 1, 1);
 `;
 
 export default populate;

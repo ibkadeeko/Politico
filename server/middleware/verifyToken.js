@@ -24,7 +24,7 @@ class tokenValidator {
         });
       }
       // if everything good, save to request for use in other routes
-      req.userid = decoded.id;
+      res.locals.userid = decoded.userid;
       next();
     });
   }
@@ -56,7 +56,7 @@ class tokenValidator {
         });
       }
       // if everything good, save to request for use in other routes
-      req.userid = decoded.id;
+      res.locals.userid = decoded.id;
       next();
     });
   }

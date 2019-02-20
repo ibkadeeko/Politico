@@ -5,7 +5,7 @@ import tokenValidator from '../middleware/verifyToken';
 
 const router = Express.Router();
 
-router.post('/office/:userid/register', tokenValidator.verifyToken, validate.id, candidates.register);
+router.post('/office/register', tokenValidator.verifyToken, validate.id, candidates.register);
 router.post('/office/:officeid/result', tokenValidator.verifyToken, validate.result, candidates.result);
 router.post('/vote', tokenValidator.verifyToken, validate.vote, candidates.vote);
 

@@ -17,12 +17,6 @@ class validate {
   }
 
   static id(req, res, next) {
-    req.checkParams('userid')
-      .trim()
-      .notEmpty()
-      .withMessage('User id Parameter required')
-      .isNumeric()
-      .withMessage('User id Parameter should be numeric');
     req.checkBody('partyid')
       .trim()
       .notEmpty()
@@ -46,12 +40,6 @@ class validate {
   }
 
   static vote(req, res, next) {
-    req.checkBody('userid')
-      .trim()
-      .notEmpty()
-      .withMessage('User id required')
-      .isNumeric()
-      .withMessage('User id should be numeric');
     req.checkBody('candidateid')
       .trim()
       .notEmpty()

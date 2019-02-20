@@ -44,7 +44,7 @@ class users {
           isadmin: newUser.rows[0].isadmin,
         };
         // create a token
-        const token = jwt.sign(payload, process.env.SECRETkey, { expiresIn: 86400 });
+        const token = jwt.sign(payload, process.env.SECRETkey, { expiresIn: 21600 });
         // To stop password from being returned
         delete newUser.rows[0].password;
         res.status(200).send({
@@ -76,7 +76,7 @@ class users {
           email: user.email,
           isadmin: user.isadmin,
         };
-        const token = jwt.sign(payload, process.env.SECRETkey, { expiresIn: 86400 });
+        const token = jwt.sign(payload, process.env.SECRETkey, { expiresIn: 21600 });
         // To stop password from being returned
         delete user.password;
         return res.status(200).send({
