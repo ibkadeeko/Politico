@@ -5,14 +5,14 @@ class validate {
       .withMessage('First Name is required')
       .trim()
       .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/)
-      .withMessage('Invalid Input')
+      .withMessage('First Name Input is Invalid')
       .customSanitizer(name => name.toLowerCase());
     req.checkBody('lastname')
       .notEmpty()
       .withMessage('Last Name is required')
       .trim()
       .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/)
-      .withMessage('Invalid Input')
+      .withMessage('Last Name Input is Invalid')
       .customSanitizer(name => name.toLowerCase());
     req.checkBody('email')
       .notEmpty()
@@ -57,6 +57,10 @@ class validate {
       )
       .withMessage('Input a valid email')
       .customSanitizer(name => name.toLowerCase());
+    req.checkBody('password')
+      .trim()
+      .notEmpty()
+      .withMessage('Password is required');
     const errors = req.validationErrors();
     if (errors) {
       return res.status(400).json({

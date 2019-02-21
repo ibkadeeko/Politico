@@ -32,6 +32,11 @@ app.get('/', (req, res) => {
   res.status(200).json({ message: 'Welcome to Politico api v1' });
 });
 
+// Invalid Routes
+app.all('*', (req, res) => {
+  res.status(404).json({ message: 'The Route you are requesting for does not exist' });
+});
+
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
   // eslint-disable-next-line no-console
