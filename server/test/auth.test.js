@@ -22,6 +22,19 @@ describe('Root Route', () => {
   });
 });
 
+describe('Invalid Route', () => {
+  it('should display 404 error', (done) => {
+    chai.request(app)
+      .get('/invalid/route')
+      .end((err, res) => {
+        res.should.have.status(404);
+        res.body.should.be.a('object');
+        res.body.should.have.property('message').eql('The Route you are requesting for does not exist');
+        done(err);
+      });
+  });
+});
+
 describe('POST auth/signup', () => {
   it('SHOULD NOT register the user if firstname is omitted', (done) => {
     const newUser = {
@@ -192,6 +205,20 @@ describe('POST auth/login', () => {
   it('SHOULD NOT login the user if email is omitted', (done) => {
     const loginDetails = {
       password: 'Ilove0dogs#',
+    };
+    chai.request(app)
+      .post('/api/v1/auth/login')
+      .send(loginDetails)
+      .end((err, res) => {
+        res.should.have.status(400);
+        res.body.should.be.a('object');
+        res.body.should.have.property('error');
+        done(err);
+      });
+  });
+  it('SHOULD NOT login the user if password field is omitted', (done) => {
+    const loginDetails = {
+      email: 'tomblack@mandela.com',
     };
     chai.request(app)
       .post('/api/v1/auth/login')
