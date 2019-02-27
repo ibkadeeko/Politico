@@ -5,14 +5,14 @@ class validate {
       .withMessage('office Name is required')
       .trim()
       .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/)
-      .withMessage('Invalid Input')
+      .withMessage('Office Name Input is Invalid')
       .customSanitizer(name => name.toLowerCase());
     req.checkBody('type')
       .notEmpty()
-      .withMessage('Invalid Office Type')
+      .withMessage('Office type is Required')
       .trim()
       .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)*$/)
-      .withMessage('Invalid Input')
+      .withMessage('Office type input is in valid')
       .customSanitizer(name => name.toLowerCase());
     const errors = req.validationErrors();
     if (errors) {
