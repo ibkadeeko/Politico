@@ -23,13 +23,13 @@
                     <div class="form">
                         <section class="register-form">
                             <h2 class="form-title">Create Account</h2>
-                            <form action="./home.html" class="form-field">
-                                <input type="email" name="email" placeholder="Email address" required autofocus>
-                                <input type="text" name="firstName" placeholder="First Name" required>
-                                <input type="text" name="lastName" placeholder="Last Name" required>
-                                <input type="text" name="text" pattern="\d*" placeholder="Phone Number" required>
-                                <input type="password" name="password" placeholder="Create a Password" required>
-                                <button class="btn btn-green">Sign up</button>
+                            <form id="registerForm" class="form-field">
+                                <input id="email" type="email" name="email" placeholder="Email address" required autofocus>
+                                <input id="firstName" type="text" name="firstName" placeholder="First Name" required>
+                                <input id="lastName" type="text" name="lastName" placeholder="Last Name" required>
+                                <input id="phone" type="text" name="phone" pattern="\d*" placeholder="Phone Number" required>
+                                <input id="password" type="password" name="password" placeholder="Create a Password" required>
+                                <button id="submit" class="btn btn-green">Sign up</button>
                                 <p class="message">Already have a Politico account?<br>
                                     <a href="./login.html">Log in</a>
                                 </p>
@@ -40,5 +40,6 @@
             </div>
         </div>
         <script src="./assets/js/main.js"></script>
+        <script src="./assets/js/authenticateUser.js"></script>
     </body>
 </html>
