@@ -28,7 +28,7 @@
   "homepage": "https://github.com/ibkadeeko/Politico#readme",
   "dependencies": {
     "babel-plugin-istanbul": "^5.1.0",
-    "bcrypt": "^3.0.3",
+    "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
